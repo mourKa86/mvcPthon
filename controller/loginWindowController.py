@@ -1,0 +1,2 @@
+class loginWindowController:
+    pass
