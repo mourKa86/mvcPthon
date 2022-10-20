@@ -23,15 +23,19 @@ class ViewFactory:
     def __initializeStage(self, baseController: BaseController):
         try:
             self.UIloader = uic.loadUi(relpath(baseController.getUIName()), None)
+
         except IOError as e:
             raise(e)
             return
+
         self.UIloader.show()
 
     def showLoginWindow(self):
         print("show login window")
         controller = LoginWindowController(self.__emailManager, self, "loginWindow.ui")
         self.__initializeStage(controller)
+        controller.setWindow(self.UIloader)
+
 
     def showMainWindow(self):
         print("show Main window")
