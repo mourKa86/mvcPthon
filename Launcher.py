@@ -8,9 +8,9 @@ from PyQt5 import QtWidgets, uic, QtGui, QtCore, QtWebEngineWidgets
 from view.viewFactory import ViewFactory
 from emailManager import EmailManager
 
-
 def relpath(path):
     return os.path.join(os.path.dirname(__file__), path)
+
 
 class App(QApplication):
     viewFactory: ViewFactory
@@ -19,18 +19,12 @@ class App(QApplication):
         self.viewFactory = ViewFactory(EmailManager())
         self.viewFactory.showLoginWindow()
 
+
         # self.mainView = LoginWindow()
-        # self.mainView.show()
-
-class LoginWindow(QtWidgets.QMainWindow):
-    def __init__(self, *args, **kwargs):
-        super(LoginWindow, self).__init__(*args, **kwargs)
-        uic.loadUi(relpath('view/mainWindow.ui'), self)
-
-
-
-        url = "https://www.google.co.jp"
-        self.emailWebView.setUrl(QtCore.QUrl(url))
+        # self.loginWindow = uic.loadUi(relpath('view/loginWindow.ui'), None)
+        # url = "https://www.google.co.jp"
+        # self.mainView.emailWebView.setUrl(QtCore.QUrl(url))
+        # self.loginWindow.show()
 
 if __name__ == '__main__':
 

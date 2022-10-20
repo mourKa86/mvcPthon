@@ -1,6 +1,6 @@
-from baseController import BaseController
+from controller.baseController import BaseController
 class LoginWindowController(BaseController):
 
-    def __init__(self, viewFactor, emailManager, uiName ):
-        super.__init__(viewFactor, emailManager, uiName)
+    def __init__(self, emailManager, viewFactory, uiName ):
+        BaseController.__init__(self, emailManager, viewFactory, uiName)
 
