@@ -4,13 +4,13 @@ from emailManager import EmailManager
 
 class BaseController(ABC):
 
-    __emailManager:EmailManager
-    __uiName:str
+    _emailManager:EmailManager
+    _uiName:str
 
     def __init__(self, emailManager, viewFactory, uiName):
-        self.__emailManager = emailManager
-        self.__viewFactor = viewFactory
-        self.__uiName = uiName
+        self._emailManager = emailManager
+        self._viewFactory = viewFactory
+        self._uiName = uiName
 
     def getUIName(self):
-        return self.__uiName
+        return self._uiName
