@@ -1,24 +1,18 @@
-import PyQt5.QtDesigner
-from controller.baseController import BaseController
-
-from PyQt5 import QtWidgets
-class LoginWindowController(BaseController):
-
-    UIloader = None
-    def __init__(self, emailManager, viewFactory, uiName ):
-        BaseController.__init__(self, emailManager, viewFactory, uiName)
+from PyQt5 import QtWidgets, uic, QtGui, QtCore
+class LoginWindowController(QtWidgets.QWidget):
+    def __init__(self, viewFactory, uiPath, *args, **kwargs):
+        super(LoginWindowController, self).__init__(*args, **kwargs)
         self.viewFactory = viewFactory
+        self.uiPath = uiPath
 
-        # here is the problem self.UIloader is not yet created
-        # self.login_btn.clicked.connect(self.on_login_btn_clicked())
+    def initializeWindow(self):
+        uic.loadUi(self.uiPath, self)
+        self.bindToControls()
+        self.show()
 
-    def setWindow(self, UIloader):
-        self.UIloader = UIloader
-        self.UIloaderUIloader.login_btn.clicked.connect(self.on_login_btn_clicked)
+    def bindToControls(self):
+        self.login_btn.clicked.connect(self.on_login_btn)
 
-    def on_login_btn_clicked(self):
-        print("clicked")
-        self.viewFactory.showMainWindow()
-
-
+    def on_login_btn(self):
+        self.viewFactory.mainWindow.initializeWindow()
 
