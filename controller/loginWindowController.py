@@ -1,12 +1,8 @@
-from view.viewFactory import ViewFactory
+
 from PyQt5 import QtWidgets, uic, QtGui, QtCore
 
-
 class LoginWindowController(QtWidgets.QWidget):
-    __emailManager: EmailManager
-    __viewFactory: ViewFactory
-    __uiPath: str
-    def __init__(self, emailManager, viewFactory, uiPath, *args, **kwargs):
+    def __init__(self, viewFactory, emailManager, uiPath, *args, **kwargs):
         super(LoginWindowController, self).__init__(*args, **kwargs)
         self.__emailManager = emailManager
         self.__viewFactory = viewFactory

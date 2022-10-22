@@ -8,10 +8,11 @@ def relpath(path):
     return path
 
 class ViewFactory:
-    def __init__(self):
+    def __init__(self, emailManager):
+        self.__emailManager = emailManager
         uiPath = relpath('loginWindow.ui')
-        self.loginWindow = LoginWindowController(self, uiPath)
+        self.loginWindow = LoginWindowController(self, emailManager, uiPath)
 
         uiPath = relpath('mainWindow.ui')
-        self.mainWindow = MainWindowController(self, uiPath)
+        self.mainWindow = MainWindowController(self, emailManager, uiPath)
 
