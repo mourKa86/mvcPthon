@@ -9,7 +9,12 @@ class LoginWindowController(QtWidgets.QWidget):
         self.__uiPath = uiPath
 
     def initializeWindow(self):
-        uic.loadUi(self.__uiPath, self)
+        try:
+            uic.loadUi(self.__uiPath, self)
+        except Exception as e:
+            raise(e)
+            return
+
         self.bindToControls()
         self.show()
 
@@ -18,4 +23,5 @@ class LoginWindowController(QtWidgets.QWidget):
 
     def on_login_btn(self):
         self.__viewFactory.mainWindow.initializeWindow()
+        self.__viewFactory.closeWindow(self)
 
